@@ -1,0 +1,25 @@
+# Convert watershed group data from Excel to csv format.
+#
+StartLog(LogFile="xlsx-to-csv.TSTool.log")
+#
+#  TSTool is used because it automates the process.
+# "WatershedGroup" worksheet
+#  Filter out rows with empty WatershedGroupName in case there are extra rows.
+SetDebugLevel(LogFileLevel=1)
+ReadTableFromExcel(TableID="WatershedGroups",InputFile="..\data\Colorado-Watershed-Groups.xlsx",Worksheet="WatershedGroup",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="WatershedGroupName:",ExcelIntegerColumns="HUC8_CSV",ExcelTextColumns="GNIS_ID_CSV")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+WriteTableToDelimitedFile(TableID="WatershedGroups",OutputFile="..\data\Colorado-Watershed-Groups.csv",WriteHeaderComments=False)
+#
+# "WatershedGroup_GNIS_Relate" worksheet   **TO BE ADDED**
+ReadTableFromExcel(TableID="WatershedGroup-GNIS",InputFile="..\data\Colorado-Watershed-Groups.xlsx",Worksheet="WatershedGroup_GNIS_Relate",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="WatershedGroupName:",ExcelTextColumns="GNIS_ID")
+WriteTableToDelimitedFile(TableID="WatershedGroup-GNIS",OutputFile="..\data\WatershedGroupName-GNIS-Relate.csv",WriteHeaderComments=False)
+#
+# "WatershedGroup_HUC8_Relate" worksheet  **TO BE ADDED**
+ReadTableFromExcel(TableID="WatershedGroup-HUC8",InputFile="..\data\Colorado-Watershed-Groups.xlsx",Worksheet="WatershedGroup_HUC8_Relate",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="WatershedGroupName:",ExcelIntegerColumns="HUC8")
+WriteTableToDelimitedFile(TableID="WatershedGroup-HUC8",OutputFile="..\data\WatershedGroupName-GNIS-Relate.csv",WriteHeaderComments=False)
+#
+# "WatershedGroup_Document_Relate" worksheet
+ReadTableFromExcel(TableID="WatershedGroup-Document",InputFile="..\data\Colorado-Watershed-Groups.xlsx",Worksheet="WatershedGroup_Document_Relate",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="WatershedGroupName:",ExcelIntegerColumns="PublicationDate")
+WriteTableToDelimitedFile(TableID="WatershedGroup-Document",OutputFile="..\data\WatershedGroupName-GNIS-Relate.csv",WriteHeaderComments=False)
+#
+#
