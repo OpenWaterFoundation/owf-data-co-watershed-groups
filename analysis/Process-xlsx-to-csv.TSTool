@@ -20,6 +20,6 @@ WriteTableToDelimitedFile(TableID="WatershedGroup-HUC8",OutputFile="..\data\Wate
 #
 # "WatershedGroup_Document_Relate" worksheet
 ReadTableFromExcel(TableID="WatershedGroup-Document",InputFile="..\data\Colorado-Watershed-Groups.xlsx",Worksheet="WatershedGroup_Document_Relate",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="WatershedGroupName:",ExcelIntegerColumns="PublicationDate")
-WriteTableToDelimitedFile(TableID="WatershedGroup-Document",OutputFile="..\data\WatershedGroupName-GNIS-Relate.csv",WriteHeaderComments=False)
+WriteTableToDelimitedFile(TableID="WatershedGroup-Document",OutputFile="..\data\WatershedGroupName-Document-Relate.csv",WriteHeaderComments=False)
 #
 #
