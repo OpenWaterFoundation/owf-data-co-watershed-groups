@@ -11,6 +11,7 @@ The repository contains the following:
 
 ```text
 analysis/                               TSTool software command files to process data into useful forms.
+  Process-xlsx-to-csv.TSTool            TSTool command file that processes the core dataset from .xlsx to .csv.
 data-orig/                              Folder containing original data files downloaded from agency websites.  
 data/                                   Folder containing data files.
   Colorado-Watershed-Groups.xlsx        Simple Excel file containing core data.
@@ -19,10 +20,10 @@ data/                                   Folder containing data files.
   WatershedGroup-GNIS-Relate.csv        The Excel file contents from the WatershedGroup_GNIS_Relate worksheet converted to a csv file, useful for automated processing. **TO BE ADDED**
   WatershedGroup-HUC8-Relate.csv        The Excel file contents from the WatershedGroup_HUC8_Relate worksheet converted to a csv file, useful for automated processing. **TO BE ADDED**
 doc/
-  ?                             		Additional documentation for the dataset.
-.gitattributes                  		Git configuration file indicate repository configuration, in particular handling
+  ?                                     Additional documentation for the dataset.
+.gitattributes                          Git configuration file indicate repository configuration, in particular handling
 												of line-ending and binary files.
-.gitignore                      		Git configuration file to ignore files that should not be committed to the repository.
+.gitignore                              Git configuration file to ignore files that should not be committed to the repository.
 README.md                               Explanation of repository contents, data files and sources and TSTool command files used to process the core data into other products.
 ```
 
@@ -109,11 +110,11 @@ Other worksheets within the workbook contain the following:
 
 This file is the **WatershedGroup** worksheet saved in csv format.  Warning:  if this file is opened directly in Excel, IDs that contain leading zeroes will not show those zeroes.  Instead, import the file into a blank Excel file by selecting Data/Get External Data/From Text.
 
-### WatershedGroup-GNIS-Relate.csv Contents ###
+### WatershedGroup-GNIS-Relate.csv Contents **NOT YET ADDED** ###
 
 This file is the **WatershedGroup_GNIS_Relate** worksheet saved in csv format.  Warning:  if this file is opened directly in Excel, IDs that contain leading zeroes will not show those zeroes.  Instead, import the file into a blank Excel file by selecting Data/Get External Data/From Text.
 
-### WatershedGroup-HUC8-Relate.csv Contents ###
+### WatershedGroup-HUC8-Relate.csv Contents **NOT YET ADDED** ###
 
 This file is the **WatershedGroup_HUC8_Relate** worksheet saved in csv format.  Warning:  if this file is opened directly in Excel, IDs that contain leading zeroes will not show those zeroes.  Instead, import the file into a blank Excel file by selecting Data/Get External Data/From Text.
 
@@ -130,8 +131,7 @@ The data sources for this dataset are listed below.
 * The U.S. Geological Survey (USGS)'s [Geographic Names Information System (GNIS)](https://geonames.usgs.gov/apex/f?p=138:1:9185633219989) is the Federal and national standard for geographic nomenclature.  The USGS developed the GNIS in support of the U.S. Board on Geographic Names as the official repository of domestic geographic names data.
 The GNIS ID is provided in the Source Water Route Framework (SWRF) spatial data layer provided by [Colorado's Decision Support Systems](http://cdss.state.co.us/GIS/Pages/AllGISData.aspx).  To find the GNIS ID and Name associated with a watershed group, OWF opened the SWRF layer in QGIS and manually cross-referenced the watershed/river described in a watershed group's website with the watershed/river's name (GNIS_Name) in the SWRF.
 Because there are several creeks with the same GNIS Name (i.e., Bear Creek), it was often necessary to select all creeks with the same GNIS Name to find the one in the correct location. 
-* HUC8 data come from a [prototype visualization](http://viz.openwaterfoundation.org/co/cwcb-viz-co-watershed-plans/index.html) created by OWF.  OWF received data from the Colorado Water Conservation Board in May 2017 regarding 8-digit Hydrologic Unit Code (HUC) basins and associated watershed plans.  Included with this data was a data field titled "Organization".  
-OWF manually cross-referenced Organization with WatershedGroupName to get HUC8 data for many of the watershed groups.  The data were also available as a GeoJSON spatial layer.  OWF overlayed this layer with the SWRF layer to find the HUC8 for watershed groups that did not have watershed plan data associated with them.  Links to watershed plans were provided and can be found in the **WatershedGroup_Document_Relate** worksheet in the Website column.
+* HUC8 data come from a [prototype visualization](http://viz.openwaterfoundation.org/co/cwcb-viz-co-watershed-plans/index.html) created by OWF.  OWF received data from the Colorado Water Conservation Board in May 2017 regarding 8-digit Hydrologic Unit Code (HUC) basins and associated watershed plans.  Included with this data was a data field titled "Organization".  OWF manually cross-referenced Organization with WatershedGroupName to get HUC8 data for many of the watershed groups.  The data were also available as a GeoJSON spatial layer.  OWF overlayed this layer with the SWRF layer to find the HUC8 for watershed groups that did not have watershed plan data associated with them.  Links to watershed plans were provided and can be found in the **WatershedGroup_Document_Relate** worksheet in the Website column.
 * OWF ID was created for each watershed group by OWF in order to ensure that at least one type of identifier contains values for every watershed group.  The OWF ID is needed to potentially link every watershed group to other datasets.  OWF ID is used in "Relate" worksheets and csv files as the identifier for this reason.  
 
 
